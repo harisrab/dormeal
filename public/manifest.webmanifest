@@ -1,0 +1,32 @@
+{
+    "theme_color": "#9F3E1F",
+    "background_color": "#F4F4E7",
+    "display": "fullscreen",
+    "scope": "/",
+    "start_url": "https://www.dormeal.com/",
+    "name": "Dormeal",
+    "short_name": "Dormeal",
+    "description": "Order food to any dorm at your footstep. All in just a few steps.",
+    "icons": [
+        {
+            "src": "/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-384x384.png",
+            "sizes": "384x384",
+            "type": "image/png"
+        },
+        {
+            "src": "/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
