@@ -16,7 +16,7 @@ export default function Shops() {
 			<div className="w-screen h-full flex flex-col items-center justify-between bg-lightBrown">
 				<div></div>
 				<DropDownRestaurant names={names} />
-				<div className="h-10 bg-white w-full">
+				<div className="py-10 w-full flex justify-center">
 					<ContinueButton />
 				</div>
 			</div>
