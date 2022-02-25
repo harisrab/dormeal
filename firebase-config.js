@@ -11,10 +11,9 @@ const firebaseConfig = {
 	authDomain: "dormeal.firebaseapp.com",
 	projectId: "dormeal",
 	storageBucket: "dormeal.appspot.com",
-	messagingSenderId: "946754546417",
-	appId: "1:946754546417:web:687372bc09d16d80285750",
+	messagingSenderId: process.env.FIREBASE_SENDER_ID,
+	appId: process.env.FIREBASE_APP_ID,
 	measurementId: "G-RGHSP3THWY",
-  
 };
 
 // Initialize Firebase
