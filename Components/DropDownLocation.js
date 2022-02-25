@@ -8,7 +8,7 @@ function DropDownRestaurant({ names }) {
 	return (
 		<select className="select w-full max-w-xs select-primary bg-lightBrown text-darkBrown rounded-full">
 			<option disabled selected>
-				Choose a restaurant
+				Choose a location
 			</option>
 			{names.map((name, index) => (
 				<option key={index}>{name}</option>

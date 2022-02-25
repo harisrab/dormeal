@@ -1,9 +1,37 @@
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-
+import { FirebaseApp } from 'firebase/app'
+import {getAuth, signInWithPopup, GoogleAuthProvider} from 'firebase/auth';
+import { app } from "../firebase-config";
+import { useRouter } from 'next/router'
 
 export default function Home() {
+
+	const auth = getAuth(app);
+	let google_provider = new GoogleAuthProvider();
+	const router = useRouter();
+
+	let signIn = () => signInWithPopup(auth, google_provider).then(
+		(result) => {
+			const credential = GoogleAuthProvider.credentialFromResult(result);
+    		const token = credential.accessToken;
+			const user = result.user;
+
+			router.push('/shops');
+
+		}).catch((error) => {
+			// Handle Errors here.
+			const errorCode = error.code;
+			const errorMessage = error.message;
+			// The email of the user's account used.
+			const email = error.email;
+			// The AuthCredential type that was used.
+			const credential = GoogleAuthProvider.credentialFromError(error);
+			// ...
+		  });
+	
+
 	return (
 		<div
 			data-theme="dormeal"
@@ -21,7 +49,7 @@ export default function Home() {
 				</p>
 			</div>
 			<div>
-				<button className="btn btn-primary gap-8 w-[100%] rounded-full px-8 normal-case font-roboto font-normal text-[16px] bg-{#9F3E1F} text-lightBrown">
+				<button onClick={signIn} className="btn btn-primary gap-8 w-[100%] rounded-full px-8 normal-case font-roboto font-normal text-[16px] bg-{#9F3E1F} text-lightBrown">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						width="18"

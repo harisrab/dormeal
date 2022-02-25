@@ -2,12 +2,17 @@
 import { useState, useEffect } from "react";
 
 // Components import
-import DropDownRestaurant from "../components/DropDownRestaurant";
+import DropDownLocation from "../components/DropDownLocation";
 import NavBar from "../components/NavBar";
 import ContinueButton from "../components/ContinueButton";
 
-export default function Shops() {
-	const [names, setNames] = useState(["Food place 1", "Food place 2", "Food place 3"]);
+export default function Location() {
+	const [location, setLocation] = useState([
+		"JCSV",
+		"SKY Lee",
+		"Starr Hall",
+		"University Hall",
+	]);
 
 	return (
 		<div className="h-screen w-screen flex flex-col items-center">
@@ -15,9 +20,9 @@ export default function Shops() {
 
 			<div className="w-screen h-full flex flex-col items-center justify-between bg-lightBrown">
 				<div className="py-10"></div>
-				<DropDownRestaurant names={names} />
+				<DropDownLocation names={location} />
 				<div className="py-10 w-full flex justify-center">
-					<ContinueButton nextpage={"menu"} text={"Table Menu"} />
+					<ContinueButton nextpage={"basket"} text={"Basket"} />
 				</div>
 			</div>
 		</div>
