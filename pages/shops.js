@@ -1,10 +1,10 @@
 // Standard functions
-import DateChoose from "../Components/DateChoose";
 import { useState, useEffect } from "react";
 
 // Components import
-import DropDownRestaurant from "../Components/DropDownRestaurant";
-import NavBar from "../Components/NavBar";
+import DropDownRestaurant from "../components/DropDownRestaurant";
+import NavBar from "../components/NavBar";
+import ContinueButton from "../components/ContinueButton";
 
 export default function Shops() {
 	const [names, setNames] = useState(["Breakfast", "Lunch", "Dinner"]);
@@ -13,15 +13,12 @@ export default function Shops() {
 		<div className="h-screen w-screen flex flex-col items-center">
 			<NavBar />
 
-			{/* <div className="w-screen h-full flex flex-col items-center justify-center bg-lightBrown">
-				
-				<NewDate/>
-			</div> */}
-
-			{/* <DateChoose /> */}
-
-			<div className="w-screen h-full flex flex-col items-center justify-center bg-lightBrown">
+			<div className="w-screen h-full flex flex-col items-center justify-between bg-lightBrown">
+				<div></div>
 				<DropDownRestaurant names={names} />
+				<div className="h-10 bg-white w-full">
+					<ContinueButton />
+				</div>
 			</div>
 		</div>
 	);
