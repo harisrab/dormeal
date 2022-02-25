@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -13,8 +13,8 @@ const firebaseConfig = {
   projectId: "dormeal",
   storageBucket: "dormeal.appspot.com",
   messagingSenderId: "946754546417",
-  appId: "1:946754546417:web:fb4a40477a3a574a285750",
-  measurementId: "G-7YTL6PXJ0Z"
+  appId: "1:946754546417:web:687372bc09d16d80285750",
+  measurementId: "G-RGHSP3THWY"
 };
 
 // Initialize Firebase
