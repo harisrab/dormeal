@@ -8,12 +8,12 @@ import { initializeApp } from "firebase/app";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
 	apiKey: process.env.FIREBASE_API_KEY,
-	authDomain: "dormeal.firebaseapp.com",
-	projectId: "dormeal",
-	storageBucket: "dormeal.appspot.com",
-	messagingSenderId: process.env.FIREBASE_SENDER_ID,
-	appId: process.env.FIREBASE_APP_ID,
-	measurementId: "G-RGHSP3THWY",
+	authDomain: "dormeal-new.firebaseapp.com",
+  	projectId: "dormeal-new",
+  	storageBucket: "dormeal-new.appspot.com",
+  	messagingSenderId: "449761113620",
+  	appId: "1:449761113620:web:9d4cb29832abca5fd75901",
+  	measurementId: "G-V2X0Q6NVLQ"
 };
 
 // Initialize Firebase
