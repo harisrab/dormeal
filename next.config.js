@@ -13,4 +13,11 @@ module.exports = withPWA({
 		register: true,
 		skipWaiting: true,
 	},
+	webpack: (config, options) => {
+		config.experiments = {
+		  topLevelAwait: true,
+		};
+		return config;
+	  },
 });
+
