@@ -1,4 +1,9 @@
+import { useRouter } from "next/router";
+
 function Cart({ totalItems, totalCost }) {
+
+	const router = useRouter();
+	
 	return (
 		<div className="dropdown dropdown-end">
 			<label
@@ -33,7 +38,9 @@ function Cart({ totalItems, totalCost }) {
 					<span className="font-bold text-lg">{totalItems} Items</span>
 					<span className="text-info">Subtotal: {totalCost}</span>
 					<div className="card-actions">
-						<button className="btn btn-primary btn-block">
+						<button className="btn btn-primary btn-block" onClick ={ () => {
+							router.push("/basket");
+						}}>
 							View cart
 						</button>
 					</div>
