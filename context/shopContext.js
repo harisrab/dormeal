@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
 
-const shopContext = createContext();
+const ShopContext = createContext();
 
-export default shopContext;
+export default ShopContext;

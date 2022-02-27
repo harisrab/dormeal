@@ -39,7 +39,9 @@ function BasketItem({name, price, description, add_value_function}) {
 						data-action="decrement"
 						onClick={() => {
 							decrement();
-							add_value_function(price);
+							if (amount > 0) {
+								add_value_function(-price);
+							}
 						}}
 						className="text-darkBrown h-full w-20 rounded-l cursor-pointer outline-none"
 					>

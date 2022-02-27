@@ -6,13 +6,13 @@ import DropDownRestaurant from "../components/DropDownRestaurant";
 import NavBar from "../components/NavBar";
 import ContinueButton from "../components/ContinueButton";
 import BasketItem from "../components/BasketItem";
-import shopContext from "../context/shopContext";
+import ShopContext from "../context/ShopContext";
 
 export default function Shops() {
 
 	let [total, setTotal] = useState(0);
 
-	const current_state = useContext(shopContext);
+	const current_state = useContext(ShopContext);
 
 	const [names, setNames] = useState([
 		"Food place 1",
