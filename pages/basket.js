@@ -9,7 +9,6 @@ import BasketItem from "../components/BasketItem";
 import ShopContext from "../context/ShopContext";
 
 export default function Shops() {
-
 	let [total, setTotal] = useState(0);
 
 	const current_state = useContext(ShopContext);
@@ -22,7 +21,7 @@ export default function Shops() {
 
 	const calculate_total = (price) => {
 		setTotal(total + price);
-	}
+	};
 
 	return (
 		<div className="h-screen w-screen flex flex-col items-center bg-lightBrown">
@@ -35,13 +34,15 @@ export default function Shops() {
 						Basket
 					</h1>
 
-					{current_state['menu'].map((value, index) => <BasketItem name={value.name} 
-						price={value.price} 
-						key={index}
-						description={value.description} 
-						add_value_function={calculate_total}/>)}
-
-					
+					{current_state["menu"].map((value, index) => (
+						<BasketItem
+							name={value.name}
+							price={value.price}
+							key={index}
+							description={value.description}
+							add_value_function={calculate_total}
+						/>
+					))}
 				</div>
 
 				<div className="flex w-full py-5 items-center justify-between font-roboto text-darkBrown">
