@@ -35,8 +35,11 @@ export default function Shops() {
 						Basket
 					</h1>
 
-					{current_state['menu'].map(
-						(value) => <BasketItem name={value.name} price={value.price} description={value.description} add_value_function={calculate_total}/>)}
+					{current_state['menu'].map((value, index) => <BasketItem name={value.name} 
+						price={value.price} 
+						key={index}
+						description={value.description} 
+						add_value_function={calculate_total}/>)}
 
 					
 				</div>
