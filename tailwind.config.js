@@ -13,6 +13,7 @@ module.exports = {
 			fontFamily: {
 				title: ["Satisfy", "cursive"],
 				roboto: ["Roboto", "sans-serif"],
+				
 			},
 		},
 	},
