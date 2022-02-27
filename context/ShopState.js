@@ -1,5 +1,5 @@
 import react from "react";
-import shopContext from "./shopContext";
+import ShopContext from "./ShopContext";
 
 const ShopState = (props) => {
 
@@ -25,9 +25,9 @@ const ShopState = (props) => {
         "delivery_fee": 10,
     }
 
-    return <shopContext.Provider value={State}>
+    return <ShopContext.Provider value={State}>
         {props.children}
-    </shopContext.Provider>
+    </ShopContext.Provider>
 
 }
 
