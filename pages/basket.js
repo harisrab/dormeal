@@ -22,6 +22,7 @@ export default function Shops() {
 	const calculate_total = (price) => {
 		setTotal(total + price);
 	};
+	
 
 	return (
 		<div className="h-screen w-screen flex flex-col items-center bg-lightBrown">
