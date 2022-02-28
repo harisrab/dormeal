@@ -1,34 +1,76 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import ShopContext from "../context/ShopContext";
 
-function MenuItem({ name, price, description }) {
+function MenuItem({ item }) {
 	const [selected, setSelected] = useState(false);
 
-	useEffect(() => {
-		console.log("Selected ===> ", selected);
-	}, [selected]);
+	// const [textColor, setTextColor] = useState("darkBrown");
+	// const [bgColor, setBgColor] = useState("lightBrown");
+	// const [shadowSize, setShadowSize] = useState("md");
 
-	// cs
+	const current_state = useContext(ShopContext);
+
+	// useEffect(() => {
+	// 	console.log("Selected ===> ", selected);
+	// }, [selected]);
+
+	// const change_theme = () => {
+	// 	if (textColor == "darkBrown") setTextColor("lightBrown");
+	// 	else setTextColor("darkBrown");
+
+	// 	if (bgColor == "darkBrown") setBgColor("lightBrown");
+	// 	else setBgColor("darkBrown");
+		
+	// 	if (shadowSize == "md") setShadowSize("xl");
+	// 	else setShadowSize("md")
+	// }
 
 	return (
-		<div
-			onClick={() => setSelected(!selected)}
-			className={`card my-3 max-w-md w-full shadow-${
-				selected ? "xl" : "md"
-			} rounded-xl border-darkBrown border-[1px] bg-${
-				selected ? "darkBrown" : "lightBrown"
-			} duration-150 text-${selected ? "lightBrown" : "darkBrown"}`}
+
+		(selected) ? (
+			<div
+			onClick={(e) => {
+				setSelected(!selected);
+				current_state.updateCart(item.id, 1, item.price);
+				e.preventDefault();
+			}}
+			className={`card my-3 max-w-md w-full shadow-md rounded-xl border-darkBrown border-[1px] bg-darkBrown duration-150}`}
 		>
-			<div className="flex px-5 my-3 justify-between text-[15px] font-roboto font-semibold">
-				<p className="">{name}</p>
-				<p className="">{price}</p>
+			<div className="flex px-5 my-3 justify-between text-[15px] font-roboto font-semibold text-lightBrown">
+				<p className="">{item.name}</p>
+				<p className="">{item.price}</p>
 			</div>
 
-			{description && (
-				<div className="px-5 py-3 justify-between text-[13px] font-roboto font-normal w-[60%]">
-					<p>{description}</p>
+			{item.description && (
+				<div className="px-5 py-3 justify-between text-[13px] font-roboto font-normal w-[60%] text-lightBrown">
+					<p>{item.description}</p>
 				</div>
 			)}
 		</div>
+		) : (
+			<div
+			onClick={(e) => {
+				setSelected(!selected);
+				current_state.updateCart(item.id, 1, item.price);
+				e.preventDefault();
+			}}
+			className={`card my-3 max-w-md w-full shadow-xl rounded-xl border-darkBrown border-[1px] bg-brown duration-150 text-darkBrown`}
+		>
+			<div className="flex px-5 my-3 justify-between text-[15px] font-roboto font-semibold">
+				<p className="">{item.name}</p>
+				<p className="">{item.price}</p>
+			</div>
+
+			{item.description && (
+				<div className="px-5 py-3 justify-between text-[13px] font-roboto font-normal w-[60%]">
+					<p>{item.description}</p>
+				</div>
+			)}
+		</div>
+		)
+
+
+		
 	);
 }
 export default MenuItem;

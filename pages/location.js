@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import DropDownLocation from "../components/DropDownLocation";
 import NavBar from "../components/NavBar";
 import ContinueButton from "../components/ContinueButton";
+import { useRouter } from "next/router";
+import { auth } from "../firebase-config";
 
 export default function Location() {
 	const [location, setLocation] = useState([
@@ -13,6 +15,15 @@ export default function Location() {
 		"Starr Hall",
 		"University Hall",
 	]);
+
+	const router = useRouter();
+
+	useEffect(
+		() => {
+			if(!auth.currentUser){
+				router.replace('/');
+			}	
+		}, []);
 
 	return (
 		<div className="h-screen w-screen flex flex-col items-center">

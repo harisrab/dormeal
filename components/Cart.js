@@ -36,7 +36,7 @@ function Cart({ totalItems, totalCost }) {
 			>
 				<div className="card-body">
 					<span className="font-bold text-lg">{totalItems} Items</span>
-					<span className="text-info">Subtotal: {totalCost}</span>
+					<span className="text-info">Subtotal: ${totalCost}</span>
 					<div className="card-actions">
 						<button className="btn btn-primary btn-block" onClick ={ () => {
 							router.push("/basket");

@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp, getApps, getApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -17,24 +18,10 @@ const firebaseConfig = {
 	measurementId: "G-G0Z9NGLK3C",
 };
 
-
-
 let app;
 
-import { collection, addDoc } from "firebase/firestore"; 
 
 
-
-try {
-  const docRef = await addDoc(collection(db, "users"), {
-    first: "Ada",
-    last: "Lovelace",
-    born: 1815
-  });
-  console.log("Document written with ID: ", docRef.id);
-} catch (e) {
-  console.error("Error adding document: ", e);
-}
 // Initialize Firebase
 if (getApps().length !== 0) {
 	app = getApp();
@@ -42,6 +29,8 @@ if (getApps().length !== 0) {
 	app = initializeApp(firebaseConfig);
 }
 
-const db = getFirestore(app);
+const data_base = getFirestore(app);
+const auth = getAuth(app);
 
 export default app;
+export { auth, data_base };

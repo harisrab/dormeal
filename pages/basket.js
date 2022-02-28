@@ -1,15 +1,16 @@
 // Standard functions
 import { useState, useEffect, useContext } from "react";
-
 // Components import
 import DropDownRestaurant from "../components/DropDownRestaurant";
 import NavBar from "../components/NavBar";
 import ContinueButton from "../components/ContinueButton";
 import BasketItem from "../components/BasketItem";
 import ShopContext from "../context/ShopContext";
+import { auth } from "../firebase-config";
+import { useRouter } from "next/router";
 
 export default function Shops() {
-
+	const router = useRouter();
 	let [total, setTotal] = useState(0);
 
 	const current_state = useContext(ShopContext);
@@ -22,9 +23,27 @@ export default function Shops() {
 
 	const calculate_total = (price) => {
 		setTotal(total + price);
+		current_state.updateTotalBill(total);
 	}
 
+	useEffect(()=>{
+		
+		if(!auth.currentUser){
+			router.replace('/');
+		}
+
+		let temp_total = 0;
+		
+		current_state.state['cart'].map((value, index) => {
+			temp_total += value.total_price;
+		});
+
+		setTotal(temp_total);
+
+	}, []);
+
 	return (
+		
 		<div className="h-screen w-screen flex flex-col items-center bg-lightBrown">
 			<NavBar />
 
@@ -35,11 +54,18 @@ export default function Shops() {
 						Basket
 					</h1>
 
-					{current_state['menu'].map((value, index) => <BasketItem name={value.name} 
-						price={value.price} 
-						key={index}
-						description={value.description} 
-						add_value_function={calculate_total}/>)}
+					{current_state.state['cart'].map((value, index1) => 
+						current_state.state['menu'].map((item, index2) => {
+							if (value.id === item.id){
+								return <BasketItem name={item.name} 
+								price={item.price} 
+								key={index2}
+								description={item.description} 
+								add_value_function={calculate_total}/>
+							}
+					})
+						)}
+					
 
 					
 				</div>
@@ -49,8 +75,8 @@ export default function Shops() {
 						<p>Total: ${total}</p>
 					</div>
 					<div className="text-[14px]">
-						<p>Service fee: ${current_state["service_fee"]}</p>
-						<p>Delivery fee: ${current_state["delivery_fee"]}</p>
+						<p>Service fee: ${current_state.state["service_fee"]}</p>
+						<p>Delivery fee: ${current_state.state["delivery_fee"]}</p>
 					</div>
 				</div>
 				<div className="py-10 w-full flex justify-center">

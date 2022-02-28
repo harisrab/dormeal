@@ -1,27 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import NavBar from "../components/NavBar";
 import MenuItem from "../components/MenuItem";
 import ContinueButton from "../components/ContinueButton";
+import ShopContext from "../context/ShopContext";
+import { useRouter } from "next/router";
+import { auth } from "../firebase-config";
 
 function Beverage() {
-	let beverages = [
-		{
-			name: "Pepsi (500 ml)",
-			price: "$10",
-		},
-		{
-			name: "Fanta (200 ml)",
-			price: "$5",
-		},
-		{
-			name: "Coke (300 ml)",
-			price: "$30",
-		},
-		{
-			name: "Cola (250 ml)",
-			price: "$20",
-		},
-	];
+	let current_state = useContext(ShopContext);
+
+	const router = useRouter();
+
+	useEffect(
+		() => {
+			if(!auth.currentUser){
+				router.replace('/');
+			}	
+		}, []);
+	
+	
 
 	return (
 		<div className="h-screen w-screen flex flex-col items-center bg-lightBrown">
@@ -30,12 +27,10 @@ function Beverage() {
 			<div className="w-full h-full p-5">
 				<div className="w-full h-10 my-5 bg-yellow-200 max-w-md"></div>
 				<div>
-					{beverages.map((product, index) => (
+					{current_state.state.beverages.map((product, index) => (
 						<MenuItem
 							key={index}
-							name={product.name}
-							price={product.price}
-						/>
+							item={product}/>
 					))}
 				</div>
 				<div className="py-10 w-full flex justify-center">

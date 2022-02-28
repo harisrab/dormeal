@@ -1,8 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
+
 function BasketItem({name, price, description, add_value_function}) {
-	const [amount, setAmount] = useState(0);
+
+	
+	const [amount, setAmount] = useState(1);
 
 	const [totalprice, setTotalPrice] = useState(price);
 
@@ -19,9 +22,12 @@ function BasketItem({name, price, description, add_value_function}) {
 	const decrement = () => {
 		if (amount > 0) {
 			setAmount(amount - 1);
-			setTotalPrice(price * amount);
+			setTotalPrice(price * (amount - 1));
 		}
 	};
+
+	
+	
 
 	return (
 		<div className="h-28 w-full font-roboto duration-300 font-semibold text-[15px] flex flex-col items-center justify-between px-5 py-2 text-darkBrown rounded-lg border-darkBrown border-[1px] my-4 shadow-md hover:shadow-xl">

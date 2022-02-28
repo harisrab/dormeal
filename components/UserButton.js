@@ -1,4 +1,12 @@
+import { useRouter } from "next/router";
+import { auth } from "../firebase-config";
+
+
 function UserButton() {
+
+
+	const router = useRouter();
+
 	return (
 		<div className="dropdown dropdown-end">
 			<label tabIndex="0" className="btn btn-ghost btn-circle avatar">
@@ -20,7 +28,12 @@ function UserButton() {
 					<a>Settings</a>
 				</li>
 				<li>
-					<a>Logout</a>
+					<a onClick={
+						() => {
+							auth.signOut();
+							router.replace('/');
+						}
+					}>Logout</a>
 				</li>
 			</ul>
 		</div>
